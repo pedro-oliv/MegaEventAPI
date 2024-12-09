@@ -30,3 +30,7 @@ Depois de concluir envie seu branch para o repositório:
 ```git push origin feature/<nome-da-funcionalidade>```
 
 e crie um push request.
+
+[Ferramentas Utilizadas](https://github.com/pedro-oliv/MegaEventAPI/blob/main/734yhgijka.pdf)
+
+[Tutorial para Fluxo de trabalho](https://github.com/pedro-oliv/MegaEventAPI/blob/main/Tutorial%20rep.pdf)
