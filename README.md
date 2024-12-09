@@ -26,5 +26,5 @@ Pedro Oliveira
 
 [Ferramentas Utilizadas](https://github.com/pedro-oliv/MegaEventAPI/blob/main/734yhgijka.pdf)
 
-[Tutorial para Fluxo de trabalho]()
+[Tutorial para Fluxo de trabalho](https://github.com/pedro-oliv/MegaEventAPI/blob/main/Tutorial%20rep.pdf)
 
