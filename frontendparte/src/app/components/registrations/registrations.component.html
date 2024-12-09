@@ -1,0 +1,51 @@
+<h1>Inscrições</h1>
+
+<!-- Formulário para Nova Inscrição -->
+<form (ngSubmit)="createRegistration()">
+  <select [(ngModel)]="newRegistration.userId" name="userId" required>
+    <option *ngFor="let user of users" [value]="user.id">
+      {{ user.name }}
+    </option>
+  </select>
+
+  <select [(ngModel)]="newRegistration.eventId" name="eventId" required>
+    <option *ngFor="let event of events" [value]="event.id">
+      {{ event.name }} - {{ event.date }}
+    </option>
+  </select>
+
+  <button type="submit">Adicionar Inscrição</button>
+</form>
+
+<!-- Lista de Inscrições -->
+<ul>
+  <li *ngFor="let registration of registrations" (click)="selectRegistration(registration)">
+    Usuário: {{ registration.userName }} - Evento: {{ registration.eventName }}
+    <button (click)="deleteRegistration(registration.id)">Deletar</button>
+  </li>
+</ul>
+
+<!-- Formulário para Editar Inscrição Selecionada -->
+<div *ngIf="selectedRegistration">
+  <h2>Editar Inscrição</h2>
+  <form (ngSubmit)="updateRegistration()">
+    <select [(ngModel)]="selectedRegistration.userId" name="editUserId" required>
+      <option *ngFor="let user of users" [value]="user.id">
+        {{ user.name }}
+      </option>
+    </select>
+
+    <select [(ngModel)]="selectedRegistration.eventId" name="editEventId" required>
+      <option *ngFor="let event of events" [value]="event.id">
+        {{ event.name }} - {{ event.date }}
+      </option>
+    </select>
+
+    <button type="submit">Salvar Alterações</button>
+  </form>
+  <button (click)="selectedRegistration = null">Cancelar</button>
+</div>
+
+<a routerLink="/users" class="btn btn-primary">Página de Usuários</a>
+<h1></h1>
+<a routerLink="/events" class="btn btn-primary">Página de Eventos</a>

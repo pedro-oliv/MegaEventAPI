@@ -1,0 +1,73 @@
+<h1>Eventos</h1>
+
+<!-- Filtros -->
+<div>
+  <label>Data:</label>
+  <input
+    type="date"
+    [(ngModel)]="searchCriteria.date"
+    (input)="filterEvents()"
+  />
+
+  <label>Tipo:</label>
+  <input
+    type="text"
+    placeholder="Digite o tipo de evento"
+    [(ngModel)]="searchCriteria.type"
+    (input)="filterEvents()"
+  />
+
+  <label>Localidade:</label>
+  <input
+    type="text"
+    placeholder="Digite a localidade"
+    [(ngModel)]="searchCriteria.location"
+    (input)="filterEvents()"
+  />
+</div>
+
+<!-- Formulário para Adicionar Novo Evento -->
+<form (ngSubmit)="createEvent()">
+  <input [(ngModel)]="newEvent.name" name="name" placeholder="Nome" required />
+  <input [(ngModel)]="newEvent.date" name="date" type="date" required />
+  <input [(ngModel)]="newEvent.type" name="type" placeholder="Tipo" required />
+  <input [(ngModel)]="newEvent.location" name="location" placeholder="Localidade" required />
+  <input [(ngModel)]="newEvent.slots" name="slots" type="number" placeholder="Vagas" required />
+  <button type="submit">Adicionar Evento</button>
+</form>
+
+<h2>Lista de eventos</h2>
+<!-- Lista de Eventos -->
+<ul>
+  <li *ngFor="let event of events" (click)="selectEvent(event)">
+    {{ event.name }} - {{ event.date }} - {{ event.location }} - {{ event.type }} ({{ event.slots }} vagas)
+    <button (click)="deleteEvent(event.id)">Deletar</button>
+  </li>
+</ul>
+
+<h2>Eventos filtrados</h2>
+<!-- Lista de Eventos Filtrados -->
+<ul>
+  <li *ngFor="let event of filteredEvents" (click)="selectEvent(event)">
+    {{ event.name }} - {{ event.date }} - {{ event.location }} - {{ event.type }} ({{ event.slots }} vagas)
+    <button (click)="deleteEvent(event.id)">Deletar</button>
+  </li>
+</ul>
+
+<!-- Formulário de Edição do Evento Selecionado -->
+<div *ngIf="selectedEvent">
+  <h2>Editar {{ selectedEvent.name }}</h2>
+  <form (ngSubmit)="updateEvent()">
+    <input [(ngModel)]="selectedEvent.name" name="editName" placeholder="Nome" required />
+    <input [(ngModel)]="selectedEvent.date" name="editDate" type="date" required />
+    <input [(ngModel)]="selectedEvent.type" name="editType" placeholder="Tipo" required />
+    <input [(ngModel)]="selectedEvent.location" name="editLocation" placeholder="Localidade" required />
+    <input [(ngModel)]="selectedEvent.slots" name="editSlots" type="number" placeholder="Vagas" required />
+    <button type="submit">Salvar Alterações</button>
+  </form>
+  <button (click)="selectedEvent = null">Cancelar</button>
+</div>
+
+<a routerLink="/users" class="btn btn-primary">Página de Usuários</a>
+<h1></h1>
+<a routerLink="/registrations" class="btn btn-primary">Página de Inscrições</a>

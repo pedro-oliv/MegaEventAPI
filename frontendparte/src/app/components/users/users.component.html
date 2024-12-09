@@ -1,0 +1,51 @@
+<h1>Usuários</h1>
+
+<!-- Formulário para Adicionar Novo Usuário -->
+<form (ngSubmit)="createUser()">
+  <input [(ngModel)]="newUser.name" name="name" placeholder="Nome" required />
+  <input [(ngModel)]="newUser.email" name="email" placeholder="Email" required />
+  <button type="submit">Adicionar Usuário</button>
+</form>
+
+<!-- Pesquisa -->
+<input
+  [(ngModel)]="searchQuery"
+  (input)="searchUsers()"
+  placeholder="Pesquisar por nome ou e-mail"
+/>
+
+<h2>Lista de usuários</h2>
+<!-- Lista de Usuários -->
+<ul>
+  <li *ngFor="let user of filteredUsers" (click)="selectUser(user)">
+    {{ user.name }} - {{ user.email }}
+    <button (click)="deleteUser(user.id)">Deletar</button>
+  </li>
+</ul>
+
+<!-- Formulário de Edição do Usuário Selecionado -->
+<div *ngIf="selectedUser">
+  <h2>Editar {{ selectedUser.name }}</h2>
+  <form (ngSubmit)="updateUser()">
+    <input [(ngModel)]="selectedUser.name" name="editName" placeholder="Nome" required />
+    <input [(ngModel)]="selectedUser.email" name="editEmail" placeholder="Email" required />
+    <button type="submit">Salvar Alterações</button>
+  </form>
+  <button (click)="clearSelection()">Cancelar</button>
+
+  <!-- Eventos Ativos e Histórico -->
+  <h3>Eventos Ativos</h3>
+  <ul>
+    <li *ngFor="let event of userEvents">{{ event.name }} ({{ event.date }})</li>
+  </ul>
+  <h3>Histórico de Inscrições</h3>
+  <ul>
+    <li *ngFor="let event of userHistory">
+      {{ event.eventName }} ({{ event.eventDate }})
+    </li>
+  </ul>  
+</div>
+
+<a routerLink="/registrations" class="btn btn-primary">Página de Inscrições</a>
+<h1></h1>
+<a routerLink="/events" class="btn btn-primary">Página de Eventos</a>
