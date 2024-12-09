@@ -7,7 +7,7 @@ API para gerenciamento de eventos, feita utilizando Express e Node.js.
 
 Faça a clonagem:
 
-git clone https://github.com/pedro-oliv/MegaEventAPI
+```git clone https://github.com/pedro-oliv/MegaEventAPI```
 
 e instale o necessário:
 
